@@ -8,7 +8,8 @@ Usage:
    
 
 Meanshift works good when the target doesn't change its color and there are no other objects with the same color as target.
-Meanshift is invariant to object rotations, because they use color histograms to find objects.
+Meanshift is invariant to object rotations, because it uses color histograms to find objects.
+
 Both Meanshift and Camshift  work pretty bad when background has the same color as tracking objects.
 Meanshift has constant bounding box size, thus it's not good at tracking increasing and decreasing objects.
 
