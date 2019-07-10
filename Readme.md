@@ -13,6 +13,9 @@ Meanshift is invariant to object rotations, because it uses color histograms to 
 Both Meanshift and Camshift  work pretty bad when background has the same color as tracking objects.
 Meanshift has constant bounding box size, thus it's not good at tracking increasing and decreasing objects.
 
-Different masks can be used to filter hsv image.
+Different masks can be used to filter image histogram.
 If tracking object is very bright - it's better to use mask with high HSV value filter.
 If tracking object mainly consists of one color - it's better to filter other colors in hue filter.
+
+On given datasets camshift algorithm worked not quite well because it doesn't preserve structure in the space.
+Mostly it fitted background or was lost. 

@@ -79,7 +79,6 @@ def meanshift(images, args):
     print('Start tracking')
     for image in images:
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
         mask = cv2.calcBackProject([hsv], channel, roi_hist, RANGES, SCALE)
         _, track_window = cv2.meanShift(mask, (x, y, width, height), TERM_CRITERIA)
         x, y, w, h = track_window
@@ -107,13 +106,11 @@ def camshist(images, args):
     print('Start tracking')
     for image in images:
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
         mask = cv2.calcBackProject([hsv], channel, roi_hist, RANGES, SCALE)
-
         ret, track_window = cv2.CamShift(mask, (x, y, width, height), TERM_CRITERIA)
         pts = cv2.boxPoints(ret)
         pts = np.int0(pts)
-        cv2.polylines(image, [pts], True, (0, 255, 0), 2)
+        cv2.polylines(image, [pts], True, GREEN_COLOR, 2)
         cv2.imshow('Mask', mask)
         cv2.imshow('Frame', image)
 
@@ -137,7 +134,6 @@ def main(args):
         args.roi = dataset_config[args.dataset]['roi']
 
     images = get_images(args.dataset)
-
     method = Methods(args.method)
 
     if method == Methods.MeanShift:
